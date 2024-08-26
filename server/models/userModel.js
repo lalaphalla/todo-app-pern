@@ -1,9 +1,13 @@
 const { Sequelize, Model, DataTypes } = require("sequelize");
 // const sequelize = new Sequelize('postgres::memory:');
-const sequelize = require('./../database/pgDatabase')
-
+const sequelize = require("./../database/pgDatabase");
 
 const User = sequelize.define("user_account", {
+//   user_id: {
+//     primaryKey: true,
+//     type: DataTypes.INTEGER,
+//     autoIncrement: true,
+//   },
   username: DataTypes.TEXT,
   email: DataTypes.TEXT,
   password: DataTypes.TEXT,

@@ -15,12 +15,13 @@ exports.createTask = catchAsync(async (req, res, next) => {
 
 exports.getAllTasks = catchAsync(async (req, res, next) => {
   console.log("get all user");
-  const task = await Task.findAll();
+  const tasks = await Task.findAll();
   res.status(200).json({
     status: "success",
-    data: { task },
+    data: { tasks },
   });
 });
+
 exports.getTaskById = catchAsync(async (req, res, next) => {
   console.log(req.params);
   const task = await Task.findByPk(req.params.id)

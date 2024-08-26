@@ -3,6 +3,7 @@ const morgan = require("morgan");
 const AppError = require("./utils/AppError");
 const sequelize = require("./database/pgDatabase");
 const app = express();
+const cors = require('cors');
 const userRouter = require("./routes/userRoutes");
 const taskRouter = require("./routes/taskRoutes");
 
@@ -10,6 +11,7 @@ const taskRouter = require("./routes/taskRoutes");
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
+app.use(cors())
 
 // Body parser
 app.use(express.json());
