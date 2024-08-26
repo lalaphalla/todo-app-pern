@@ -1,15 +1,8 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit'
+import taskReduer from './task'
 
-const initialState = {title: '', description: ''};
-const taskSlice = createSlice({
-    name: 'task',
-    initialState,
-    reducers:{
-        addTask(state,action){
-            state = action.payload
-        }
-    }
-})
 const store = configureStore({
-    reducer: taskSlice.reducer
+    reducer: {task: taskReduer}
 })
+
+export default store
