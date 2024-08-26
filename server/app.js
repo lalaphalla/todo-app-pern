@@ -16,9 +16,9 @@ app.use(cors())
 // Body parser
 app.use(express.json());
 
-// (async () => {
-//   await sequelize.sync();
-// })();
+(async () => {
+  await sequelize.sync();
+})();
 
 // Route
 app.use("/api/v1/users", userRouter);

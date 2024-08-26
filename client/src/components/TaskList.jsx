@@ -7,13 +7,11 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { fetchAllTask } from "../services/action";
 
 export default function TaskList() {
   const [tasks, setTasks] = useState(undefined);
 
   useEffect(() => {
-    fetchAllTask();
     const fetchData = async () => {
       const res = await fetch("http://localhost:3000/api/v1/tasks");
       const resData = await res.json();
@@ -37,7 +35,7 @@ export default function TaskList() {
             {tasks &&
               tasks.map((row) => (
                 <TableRow
-                  key={row.name}
+                  key={row.title}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">

@@ -3,9 +3,8 @@
 const dotenv = require("dotenv");
 
 dotenv.config({ path: "./config.env" });
-
+console.log('first')
 const app = require("./app");
-
 
 
 
