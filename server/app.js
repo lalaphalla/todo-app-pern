@@ -1,17 +1,17 @@
 const express = require("express");
 const morgan = require("morgan");
+const cors = require('cors');
 // const AppError = require("./utils/AppError");
 const sequelize = require("./database/pgDatabase");
-const app = express();
-const cors = require('cors');
 const userRouter = require("./routes/userRoutes");
 const taskRouter = require("./routes/taskRoutes");
 
+const app = express();
+app.use(cors())
 // Middleware
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
-app.use(cors())
 
 // Body parser
 app.use(express.json());
