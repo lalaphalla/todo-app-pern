@@ -21,7 +21,7 @@ if (isLocal) {
     dialect: "postgres",
   };
 } else {
-  DB = "agteast";
+  DB = "agtest";
   PASSWORD = "rdsamazondb";
   host = "agtest-db.cbeeey04ybsg.us-east-1.rds.amazonaws.com";
   dbConfig = {
