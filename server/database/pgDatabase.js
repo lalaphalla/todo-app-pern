@@ -10,7 +10,7 @@ const isLocal = false;
 let USERNAME, PASSWORD, DB;
 let host, dbConfig;
 
-USERNAME = process.env.USERNAME;
+USERNAME = 'postgres';
 
 if (isLocal) {
   DB = process.env.DATABASE_LOCAL;
@@ -21,7 +21,7 @@ if (isLocal) {
     dialect: "postgres",
   };
 } else {
-  DB = "agtest";
+  DB = "agteast";
   PASSWORD = "rdsamazondb";
   host = "agtest-db.cbeeey04ybsg.us-east-1.rds.amazonaws.com";
   dbConfig = {
