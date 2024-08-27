@@ -24,6 +24,7 @@ export default function TaskList() {
   } else if (error) {
     console.log("error");
   } else {
+    console.log(contents);
     contents = data.data.tasks;
   }
   // useEffect(() => {
