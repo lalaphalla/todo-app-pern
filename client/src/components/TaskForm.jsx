@@ -6,8 +6,14 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import InputLabel from "@mui/material/InputLabel";
 import Button from "@mui/material/Button";
+import { fetchAllTask } from "./LoginForm";
+import { useSelector } from "react-redux";
+import { useAddTaskMutation } from "../store";
 
 export default function TaskForm() {
+  const tasks = useSelector( state => state.task)
+  const [addTask, results] = useAddTaskMutation();
+
   const submitData = async (data) => {
     console.log(data);
     const res = await fetch("http://localhost:3000/api/v1/tasks", {
@@ -26,11 +32,17 @@ export default function TaskForm() {
     const fd = new FormData(event.target);
     const data = Object.fromEntries(fd.entries());
     const taskData = { ...data, user_id: 2 };
-    submitData(taskData);
+    addTask(taskData)
+    // submitData(taskData);
+    event.target.reset();
+    // fetchAllTask()
     // if(!res.ok){
     //     console.log('error');
     //     return
     // }
+  }
+  function handleCancel() {
+    console.log(tasks);
   }
 
   return (
@@ -91,6 +103,9 @@ export default function TaskForm() {
               <Grid item xs={12} sm={4}>
                 <Button type="submit" variant="contained">
                   Save
+                </Button>
+                <Button onClick={handleCancel} variant="contained">
+                  Cancel
                 </Button>
               </Grid>
               <Grid item xs={12} sm={5} />

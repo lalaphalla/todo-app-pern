@@ -7,18 +7,33 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { useDispatch, useSelector } from "react-redux";
+import { tasksActions } from "../store/task";
+import { fetchAllTask } from "./LoginForm";
+import { useFetchTasksQuery } from "../store";
 
 export default function TaskList() {
-  const [tasks, setTasks] = useState(undefined);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch("http://localhost:3000/api/v1/tasks");
-      const resData = await res.json();
-     setTasks(resData.data.tasks);
-    };
-   fetchData();
-  }, []);
+  // const tasksab = useSelector((state) => state.task);
+  const dispatch = useDispatch();
+  const [tasks, setTasks] = useState();
+  const { data, error, isLoading } = useFetchTasksQuery();
+  // const result = useFetchTasksQuery();
+  let contents;
+  if (isLoading) {
+    console.log("loading");
+  } else if (error) {
+    console.log("error");
+  } else {
+    contents = data.data.tasks;
+  }
+  // useEffect(() => {
+  // console.log(data, error, isLoading);
+  // console.log(result);
+  // dispatch(tasksActions.getAllTask());
+  // console.log(tasksab && tasksab);
+  // fetchAllTask(setTasks);
+  // setTasks(data.data.tasks)
+  // }, []);
 
   return (
     <>
@@ -32,8 +47,8 @@ export default function TaskList() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {tasks &&
-              tasks.map((row) => (
+            {contents &&
+              contents.map((row) => (
                 <TableRow
                   key={row.title}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
