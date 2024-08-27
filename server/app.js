@@ -1,6 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
-const AppError = require("./utils/AppError");
+// const AppError = require("./utils/AppError");
 const sequelize = require("./database/pgDatabase");
 const app = express();
 const cors = require('cors');
@@ -24,9 +24,9 @@ app.use(express.json());
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/tasks", taskRouter);
 
-app.all("*", (req, res, next) => {
-  next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
-});
+// app.all("*", (req, res, next) => {
+  // next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
+// });
 
 module.exports = app;
 
