@@ -6,7 +6,7 @@ const dotenv = require("dotenv");
 // const USERNAME = process.env.USERNAME;
 // const PASWORD = process.env.PASSWORD;
 
-const isLocal = false;
+const isLocal = true;
 let USERNAME, PASSWORD, DB;
 let host, dbConfig;
 
@@ -21,9 +21,11 @@ if (isLocal) {
     dialect: "postgres",
   };
 } else {
-  DB = "agtest";
-  PASSWORD = "rdsamazondb";
-  host = "agtest-db.cbeeey04ybsg.us-east-1.rds.amazonaws.com";
+  // DB = "agtest";
+  DB = "students";
+  PASSWORD = "password";
+  // PASSWORD = "rdsamazondb";
+  host = "54.174.255.134";
   dbConfig = {
     host,
     dialect: "postgres",

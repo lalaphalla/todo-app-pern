@@ -5,9 +5,15 @@ const cors = require('cors');
 const sequelize = require("./database/pgDatabase");
 const userRouter = require("./routes/userRoutes");
 const taskRouter = require("./routes/taskRoutes");
+const cookieParser = require("cookie-parser");
+
+const corsOptions = {
+  origin: 'http://localhost:5173', // Specify your frontend origin
+  credentials: true, // Allow cookies and other credentials
+};
 
 const app = express();
-app.use(cors())
+app.use(cors(corsOptions));
 // Middleware
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
@@ -15,6 +21,9 @@ if (process.env.NODE_ENV === "development") {
 
 // Body parser
 app.use(express.json());
+app.use(cookieParser());
+
+// app.options('/api/v1/users/login', cors());
 
 (async () => {
   await sequelize.sync();
