@@ -6,7 +6,9 @@ const tasksApi = createApi({
   baseQuery: fetchBaseQuery({
     // baseUrl: "api/v1",
     baseUrl: "http://localhost:3000/api/v1",
+    
   }),
+  tagTypes: ['Task'],
   endpoints(builder) {
     return {
       addTask: builder.mutation({

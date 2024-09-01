@@ -12,7 +12,7 @@ import { useAddTaskMutation } from "../store";
 
 export default function TaskForm() {
   const tasks = useSelector( state => state.task)
-  const [addTask, results] = useAddTaskMutation();
+  const [addTask, {isLoading}] = useAddTaskMutation();
 
   const submitData = async (data) => {
     console.log(data);

@@ -49,9 +49,9 @@ export default function TaskList() {
           </TableHead>
           <TableBody>
             {contents &&
-              contents.map((row) => (
+              contents.map((row,id ) => (
                 <TableRow
-                  key={row.title}
+                  key={id}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">

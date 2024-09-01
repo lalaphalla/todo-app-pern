@@ -10,7 +10,7 @@ const isLocal = true;
 let USERNAME, PASSWORD, DB;
 let host, dbConfig;
 
-USERNAME = 'postgres';
+USERNAME = "postgres";
 
 if (isLocal) {
   DB = process.env.DATABASE_LOCAL;
@@ -19,6 +19,12 @@ if (isLocal) {
   dbConfig = {
     host,
     dialect: "postgres",
+    define: {
+      freezeTableName: true,
+      underscored: true,
+      quoteIdentifiers: false,
+      
+    },
   };
 } else {
   // DB = "agtest";
@@ -43,7 +49,7 @@ const connect = async () => {
   try {
     await sequelize.authenticate();
   } catch (err) {
-    console.error("Unable to connect to the database:", err);
+    console.error("Unable to connect to the database:");
   }
 };
 connect();
